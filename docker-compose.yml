@@ -15,15 +15,17 @@ services:
        source: ./client
        target: /app
 
-  # backend:
-  #   container_name: back-ayomi
-  #   build: 
-  #     context: .
-  #     dockerfile: server/Dockerfile
-  #   ports:
-  #     - 5000:5000
-  #   volumes:
-  #     - .:/ayomi_server
+  backend:
+    container_name: back-ayomi
+    build: 
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+     - type: bind
+       source: ./server
+       target: /app
 
   db:
     image: mariadb:10.6.10-focal
