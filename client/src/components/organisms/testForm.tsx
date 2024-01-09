@@ -54,7 +54,7 @@ const TestForm = () => {
     }
 
     const getCsv = async () => {
-        const response = await fetch('http://localhost:8000/operation/csv', options).then(data => data.json())
+        const response = await fetch('http://localhost:8000/csv', options).then(data => data.json())
 
         console.log('res', response)
 
