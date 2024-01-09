@@ -4,7 +4,6 @@ def Calculator(data:list):
     newOperation = []
     number = re.compile(r'[0-9]')
 
-    # Format 1: Oprérande et opérateur non mélanger dans la list
     for item in data:
         if (number.match(item)):
             newOperation.append(item)
