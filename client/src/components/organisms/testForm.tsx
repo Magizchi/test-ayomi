@@ -4,10 +4,10 @@ import Calculatrice from "./calculatrice";
 const TestForm = () => {
     const [state, setState] = useState<string>('');
     const [operation, setOperationn] = useState<string[]>([]);
+    const [result, setResult] = useState<number>(0)
     const [message, setMessage] = useState<string>('');
 
     const operator = ['^', '/', '+', '-', '*']
-    const operand = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     console.log('Operation[Operation.len]', operation.length, operation[operation.length - 1]);
 
     const clearAll = () => [setState(''), setOperationn([])]
@@ -49,12 +49,22 @@ const TestForm = () => {
         return setOperationn(newOperation)
     }
 
-    const getResult = () => {
+    const getResult = async () => {
+        const headers = new Headers();
+        // pas la bonne methode mais sa fonctionne
+        headers.append('Access-Control-Allow-Origin', '*');
+        const options = {
+            method: 'GET',
+            headers,
+        };
+        const response = await fetch('http://localhost:8000/items?q=' + operation.join(','), options).then(data => data.json())
+        console.log('res', response)
+        setResult(response.resultat)
     }
 
     return (
         <section className="flex flex-col items-center justify-center bg-gray-900">
-            <p className="p-3 my-10 text-5xl bg-white">{operation.join(' ')} {!!operation.length && '='}</p>
+            <p className="p-3 my-10 text-5xl bg-white">{operation.join(' ')} {!!operation.length && '='} {result ? result : ''}</p>
 
             <p className="text-xl text-red-500">{message}</p>
             <Calculatrice onChange={onChange} onEnter={onEnter} clearAll={clearAll} clearLast={clearLast} getResult={getResult} />
