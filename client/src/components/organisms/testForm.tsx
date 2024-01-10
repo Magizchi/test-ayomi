@@ -57,7 +57,7 @@ const TestForm = () => {
 
     return (
         <section >
-            <Buttons className="w-48 text-black border-2 border-black" onClick={() => getCsv()}>Télécharger CSV</Buttons>
+            <Buttons className="w-48 !text-black border-2 border-black" onClick={() => getCsv()}>Télécharger CSV</Buttons>
             <div className="flex flex-col items-center justify-center bg-gray-900">
                 <p className="p-3 my-10 text-5xl bg-white">{operation.join(' ')} {result ? `= ${result}` : ''}</p>
                 {/* <p className="text-xl text-red-500">{message}</p> */}
