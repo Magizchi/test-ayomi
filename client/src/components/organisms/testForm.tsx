@@ -47,17 +47,12 @@ const TestForm = () => {
     };
 
     const getResult = async () => {
-
         const response = await fetch('http://localhost:8000/items?q=' + operation.join(','), options).then(data => data.json())
-        console.log('res', response)
-        setResult(response.resultat)
+        setResult(response.result)
     }
 
     const getCsv = async () => {
         const response = await fetch('http://localhost:8000/csv', options).then(data => data.json())
-
-        console.log('res', response)
-
     }
 
     return (
