@@ -64,12 +64,12 @@ def read_item(q: str, db: Session = Depends(get_db)):
     return crud.create_operations(db=db, operation=newOperation)
 
 @app.get("/all-operations")
-async def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     operation = crud.get_all_operations(db)
     return {"operation": operation}
 
 @app.get("/csv")
-async def get_operation_csv(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_operation_csv(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     operations = crud.get_all_operations(db)
     csvFile = convert_db_to_csv(operations, "csv.file")
     print(csvFile)

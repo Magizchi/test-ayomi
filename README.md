@@ -28,7 +28,7 @@ Exercice Plus :
 
  Copier le repositorie
 
-    git pull {du git}
+    git clone
 
  Construire les images
 
