@@ -37,3 +37,14 @@ Exercice Plus :
  Accessible
 
     http://localhost:5173
+
+ API DOC
+
+   http://localhost:8000/docs
+
+ PHPMYADMIN
+
+   http://localhost:8080
+
+   user: root
+   passowrd: password
