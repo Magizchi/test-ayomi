@@ -21,8 +21,7 @@ interface Props {
 const Calculatrice: FunctionComponent<Props> = ({ onChange, onEnter, clearAll, clearLast, getResult }) => {
     return (
         <div className="grid grid-cols-4 grid-rows-5 gap-1 py-2 mb-2 w-fit">
-            <Buttons className="bg-gray-700" onClick={() => onChange('^')}>^</Buttons>
-            <Buttons className="bg-gray-700" onClick={() => onChange('/')}>/</Buttons>
+            <Buttons className="col-start-2 bg-gray-700" onClick={() => onChange('/')}>/</Buttons>
             <Buttons className="bg-gray-700" onClick={() => onChange('*')}>*</Buttons>
             <Buttons className="bg-gray-700" onClick={() => onChange('-')}>-</Buttons>
             <Buttons className="bg-gray-500" onClick={() => onChange('7')}>7</Buttons>
