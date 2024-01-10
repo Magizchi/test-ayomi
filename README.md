@@ -33,3 +33,7 @@ Exercice Plus :
  Construire les images
 
     docker-compose up --build -d
+
+ Accessible
+
+    http://localhost:5173
