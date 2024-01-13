@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Calculatrice from "./calculatrice";
-import Buttons from "../atoms/button";
 
 const TestForm = () => {
     const [state, setState] = useState<string>('');
@@ -38,25 +37,18 @@ const TestForm = () => {
         return setOperationn(newOperation)
     }
 
-    const headers = new Headers();
-    // pas la bonne methode mais sa fonctionne
-    headers.append('Access-Control-Allow-Origin', '*');
-    const options = {
-        method: 'GET',
-        headers,
-    };
-
     const getResult = async () => {
-        const response = await fetch('http://localhost:8000/items?q=' + operation.join(','), options).then(data => data.json())
+        const response = await fetch('http://localhost:8000/items?q=' + operation.join(',')).then(data => data.json())
         setResult(response.result)
     }
 
     // const getCsv = async () => {
-    //     const response = await fetch('http://localhost:8000/csv', options).then(data => data.json())
+    //     const response = await fetch('http://localhost:8000/csv').then(data => data.json())
     // }
 
     return (
         <section className="flex flex-col items-center justify-center bg-gray-900">
+            <p className="text-white">exemple: 3 10 5 + * ou 10 5 + 3 *</p>
             <p className="p-3 my-10 text-5xl bg-white">{operation.join(' ')} {result ? `= ${result}` : ''}</p>
             {/* <p className="text-xl text-red-500">{message}</p> */}
             <Calculatrice onChange={onChange} onEnter={onEnter} clearAll={clearAll} clearLast={clearLast} getResult={getResult} />
