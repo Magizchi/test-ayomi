@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Response, status, Depends
 from fastapi.responses import JSONResponse, FileResponse
-from utils.calculator import Calculator
+from ..utils.calculator import Calculator
 from sqlalchemy.orm import Session
-from utils.csvConverter import convert_db_to_csv
-from orm import crud, models, schemas
-from orm.database import SessionLocal, engine
+from ..utils.csvConverter import convert_db_to_csv
+from ..orm import crud, models, schemas
+from ..orm.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 # PAS LA BONNE METHODE
@@ -74,3 +74,6 @@ def get_operation_csv(skip: int = 0, limit: int = 100, db: Session = Depends(get
     print(csvFile)
     return FileResponse(csvFile)
 
+
+if __name__ == "__main__":
+    uvicorn.run("api/routes/main:app", host="0.0.0.0", port=8000, reload=True)
