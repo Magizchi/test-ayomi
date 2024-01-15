@@ -70,8 +70,12 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 @app.get("/csv")
 def get_operation_csv(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     operations = crud.get_all_operations(db)
-    csvFile = convert_db_to_csv(operations, "csv.file")
-    print(csvFile)
+    
+    operationForCsv = []
+    for operation in operations:
+        operationForCsv.append({'operation':operation.operation, 'result':operation.result})
+    
+    csvFile = convert_db_to_csv(operationForCsv, "file.csv")
     return FileResponse(csvFile)
 
 
