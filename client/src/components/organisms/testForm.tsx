@@ -50,8 +50,8 @@ const TestForm = () => {
     }
 
     return (
-        <section className="flex flex-col items-center justify-center bg-gray-900">
-            <Buttons onClick={() => getCsv()}>Télécharger liste des opérations</Buttons>
+        <section className="flex flex-col items-center justify-center p-2 bg-gray-900">
+            <Buttons className="w-48 border-2 border-gray-500" onClick={() => getCsv()}>Télécharger Opérations</Buttons>
             <p className="text-white">exemple: 3 10 5 + * ou 10 5 + 3 *</p>
             <p className="p-3 my-10 text-5xl bg-white">{operation.join(' ')} {result ? `= ${result}` : ''}</p>
             {/* <p className="text-xl text-red-500">{message}</p> */}
